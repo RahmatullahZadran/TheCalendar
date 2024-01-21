@@ -10,7 +10,8 @@ function updateClock() {
     container.style.fontSize = '40px';
     container.style.fontWeight = 'bold';
     container.style.padding = '10px';
-    container.style.margin = '10px';
+    container.style.marginTop = '50px';
+    container.style.marginBottom = '-50px';
     container.style.border = '3px solid blue';
 
     // Get the current time
@@ -45,4 +46,12 @@ function updateClock() {
     updateClock();
   };
 
-  
+
+
+ $( function() {
+  $( "#selectable" ).selectable();
+} );
+
+
+
+
