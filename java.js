@@ -1,5 +1,7 @@
 console.log("Hello, World!");
 
+var input = document.getElementById("input");
+
 
 // Update the clock
 function updateClock() {
@@ -53,5 +55,6 @@ function updateClock() {
 } );
 
 
-
-
+input.style.width = '900px';
+input.style.textAlign = 'center';
+input.style.color = 'black';
