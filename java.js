@@ -1,6 +1,9 @@
 console.log("Hello, World!");
 
-var input = document.getElementById("input");
+var inputs = document.getElementsByClassName("input");
+
+
+
 
 
 // Update the clock
@@ -55,6 +58,12 @@ function updateClock() {
 } );
 
 
-input.style.width = '900px';
-input.style.textAlign = 'center';
-input.style.color = 'black';
+
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].style.width = '85%';
+  inputs[i].style.textAlign = 'center';
+  inputs[i].style.color = 'black';
+  inputs[i].style.fontSize = '20px';
+  inputs[i].style.height = '70px';
+  inputs[i].style.border = '3px solid blue';
+}
