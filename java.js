@@ -67,3 +67,48 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].style.height = '70px';
   inputs[i].style.border = '0px solid transparent';
 }
+
+
+$(document).ready(function() {
+  // Get the current hour
+  var currentHour = new Date().getHours();
+
+  // Iterate through each time slot and set background color based on the current time
+  $("#selectable li").each(function() {
+    // Extract the hour from the text content of the time slot
+    var timeSlotHour = parseInt($(this).text().split("am")[0]);
+
+    // Compare the current hour with the time slot hour
+    if (timeSlotHour < currentHour) {
+      // Past time, set background color to gray
+      $(this).css("background-color", "#d3d3d3");
+    } else if (timeSlotHour === currentHour) {
+      // Current time, set background color to a different color
+      $(this).css("background-color", "red");
+    } else {
+      // Future time, set background color to another color
+      $(this).css("background-color", "green");
+    }
+  });
+});
+
+
+$(document).ready(function() {
+  // Add button click event handler
+  $(".button").on("click", function() {
+    // Get the input text from the associated input field
+    var inputText = $(this).prev(".input").val();
+
+    // Check if the input is not empty
+    if (inputText.trim() !== "") {
+      // Create a new list item with the input text
+      var newItem = $("<li>").addClass("ui-widget-content").text(inputText);
+
+      // Append the new item to the selectable list
+      $(this).closest("li").append(newItem);
+
+      // Clear the associated input field after adding
+      $(this).prev(".input").val("");
+    }
+  });
+});

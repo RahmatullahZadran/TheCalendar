@@ -72,14 +72,14 @@ body {
   }
 
   .button {
-    background-color: transparent;
+    background-color: blue;
     border: none;
-    color: black;
+    color: red;
     padding: 10px;
     text-align: center;
-    text-decoration: none;
+    text-decoration:solid ;
     display: inline-block;
-    font-size: 16px;
+    font-size: 30px;
     margin: 4px 2px;
     cursor: pointer;
   }
