@@ -65,5 +65,5 @@ for (var i = 0; i < inputs.length; i++) {
   inputs[i].style.color = 'black';
   inputs[i].style.fontSize = '20px';
   inputs[i].style.height = '70px';
-  inputs[i].style.border = '3px solid blue';
+  inputs[i].style.border = '0px solid transparent';
 }
