@@ -75,22 +75,34 @@ $(document).ready(function() {
 
   // Iterate through each time slot and set background color based on the current time
   $("#selectable li").each(function() {
-    // Extract the hour from the text content of the time slot
-    var timeSlotHour = parseInt($(this).text().split("am")[0]);
+    // Extract the hour and am/pm from the text content of the time slot
+    var timeSlotText = $(this).text();
+    var matches = timeSlotText.match(/(\d+)(am|pm)/);
 
-    // Compare the current hour with the time slot hour
-    if (timeSlotHour < currentHour) {
-      // Past time, set background color to gray
-      $(this).css("background-color", "#d3d3d3");
-    } else if (timeSlotHour === currentHour) {
-      // Current time, set background color to a different color
-      $(this).css("background-color", "red");
-    } else {
-      // Future time, set background color to another color
-      $(this).css("background-color", "green");
+    if (matches) {
+      var timeSlotHour = parseInt(matches[1]);
+      var period = matches[2];
+
+      // Convert pm hours to 24-hour format
+      if (period === "pm" && timeSlotHour !== 12) {
+        timeSlotHour += 12;
+      }
+
+      // Compare the current hour with the time slot hour
+      if (timeSlotHour < currentHour) {
+        // Past time, set background color to gray
+        $(this).css("background-color", "#d3d3d3");
+      } else if (timeSlotHour === currentHour) {
+        // Current time, set background color to a different color
+        $(this).css("background-color", "red");
+      } else {
+        // Future time, set background color to another color
+        $(this).css("background-color", "green");
+      }
     }
   });
 });
+
 
 
 $(document).ready(function() {
@@ -101,13 +113,13 @@ $(document).ready(function() {
 
     // Check if the input is not empty
     if (inputText.trim() !== "") {
-      // Create a new list item with the input text
-      var newItem = $("<li>").addClass("ui-widget-content").text(inputText);
+      // Update the text content of the associated <li> with the input text
+      $(this).parent().text(inputText);
 
-      // Append the new item to the selectable list
-      $(this).closest("li").append(newItem);
-
-      // Clear the associated input field after adding
+      // Append the button back to the <li> for future edits
+      $(this).parent().append($(this));
+      
+      // Clear the associated input field after updating
       $(this).prev(".input").val("");
     }
   });
